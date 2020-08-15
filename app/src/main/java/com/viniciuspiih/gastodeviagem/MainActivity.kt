@@ -20,7 +20,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
   }
 
-  private fun calculate() {}
+  private fun calculate() {
 
+    if (validationOk()) {
+      val distance = distance.text.toString().toFloat()
+      val price = price.text.toString().toFloat()
+      val autonomy = autonomy.text.toString().toFloat()
 
+      val totalValue = distance * price / autonomy
+
+      textTotalValue.text = "R$ ${"%.2f".format(totalValue)}"
+    }
+  }
+
+  private fun validationOk(): Boolean =
+    (distance.text.toString() != "" && price.text.toString() != "" && autonomy.text.toString() != "")
 }
