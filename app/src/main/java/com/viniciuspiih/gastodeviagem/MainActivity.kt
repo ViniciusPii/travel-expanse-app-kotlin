@@ -33,13 +33,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val totalValue = distance * price / autonomy
 
+        textTotalValue.visibility = View.VISIBLE
+        totalSpend.visibility = View.VISIBLE
+
         textTotalValue.text = "R$ ${"%.2f".format(totalValue)}"
       } catch (nfe: NumberFormatException) {
         Toast.makeText(this, getString(R.string.errorValue), Toast.LENGTH_SHORT).show()
+        textTotalValue.visibility = View.GONE
+        totalSpend.visibility = View.GONE
       }
 
     } else {
       Toast.makeText(this, getString(R.string.notification), Toast.LENGTH_SHORT).show()
+      textTotalValue.visibility = View.GONE
+      totalSpend.visibility = View.GONE
     }
   }
 
