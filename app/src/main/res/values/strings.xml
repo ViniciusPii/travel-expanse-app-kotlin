@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Gasto de viagem</string>
+    <string name="distance">Distância em Km</string>
+    <string name="price">Preço da gasolina</string>
+    <string name="autonomy">Autonomia do veículo</string>
+    <string name="total_spend">Seu gasto total será de:</string>
+    <string name="total">R$ 0</string>
+    <string name="calculate">Calcular</string>
+    <string name="title">Gasto de Viagem</string>
+</resources>
