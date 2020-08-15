@@ -3,7 +3,9 @@ package com.viniciuspiih.gastodeviagem
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,16 +25,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
   private fun calculate() {
 
     if (validationOk()) {
-      val distance = distance.text.toString().toFloat()
-      val price = price.text.toString().toFloat()
-      val autonomy = autonomy.text.toString().toFloat()
 
-      val totalValue = distance * price / autonomy
+      try {
+        val distance = distance.text.toString().toFloat()
+        val price = price.text.toString().toFloat()
+        val autonomy = autonomy.text.toString().toFloat()
 
-      textTotalValue.text = "R$ ${"%.2f".format(totalValue)}"
+        val totalValue = distance * price / autonomy
+
+        textTotalValue.text = "R$ ${"%.2f".format(totalValue)}"
+      } catch (nfe: NumberFormatException) {
+        Toast.makeText(this, getString(R.string.errorValue), Toast.LENGTH_SHORT).show()
+      }
+
+    } else {
+      Toast.makeText(this, getString(R.string.notification), Toast.LENGTH_SHORT).show()
     }
   }
 
   private fun validationOk(): Boolean =
-    (distance.text.toString() != "" && price.text.toString() != "" && autonomy.text.toString() != "")
+    (distance.text.toString() != "" && price.text.toString() != "" && autonomy.text.toString() != "0")
 }

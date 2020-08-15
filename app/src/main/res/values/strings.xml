@@ -7,4 +7,6 @@
     <string name="total">R$ 0</string>
     <string name="calculate">Calcular</string>
     <string name="title">Gasto de Viagem</string>
+    <string name="notification">Preencha todos os Campos!</string>
+    <string name="errorValue">Informe valores Válidos!</string>
 </resources>
